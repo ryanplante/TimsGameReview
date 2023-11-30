@@ -1,0 +1,22 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Genre] (Table)
+       [dbo].[Rating] (Table)
+       [dbo].[Users] (Table)
+       [dbo].[VideoGame] (Table)
+       [dbo].[sp_AllGames] (Procedure)
+       [dbo].[sp_AllGenres] (Procedure)
+       [dbo].[spAddReview] (Procedure)
+       [dbo].[spGetGameRating] (Procedure)
+
+** Supporting actions
