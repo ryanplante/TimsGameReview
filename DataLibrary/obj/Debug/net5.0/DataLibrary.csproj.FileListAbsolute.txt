@@ -1,0 +1,5 @@
+C:\Users\aweso\Documents\Github\TimsGameReview\DataLibrary\obj\Debug\net5.0\DataLibrary.csproj.AssemblyReference.cache
+C:\Users\aweso\Documents\Github\TimsGameReview\DataLibrary\obj\Debug\net5.0\DataLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aweso\Documents\Github\TimsGameReview\DataLibrary\obj\Debug\net5.0\DataLibrary.AssemblyInfoInputs.cache
+C:\Users\aweso\Documents\Github\TimsGameReview\DataLibrary\obj\Debug\net5.0\DataLibrary.AssemblyInfo.cs
+C:\Users\aweso\Documents\Github\TimsGameReview\DataLibrary\obj\Debug\net5.0\DataLibrary.csproj.CoreCompileInputs.cache

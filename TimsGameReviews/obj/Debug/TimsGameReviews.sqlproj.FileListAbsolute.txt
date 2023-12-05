@@ -8,9 +8,5 @@ C:\Users\aweso\Documents\Github\TimsGameReview\TimsGameReviews\bin\Debug\TimsGam
 C:\Users\aweso\Documents\Github\TimsGameReview\TimsGameReviews\bin\Debug\TimsGameReviews.dll
 C:\Users\aweso\Documents\Github\TimsGameReview\TimsGameReviews\bin\Debug\TimsGameReviews.pdb
 C:\Users\aweso\Documents\Github\TimsGameReview\TimsGameReviews\obj\Debug\TimsGameReviews.sqlproj.AssemblyReference.cache
-C:\Users\aweso\Documents\Github\TimsGameReview\TimsGameReviews\obj\Debug\Model.xml
-C:\Users\aweso\Documents\Github\TimsGameReview\TimsGameReviews\obj\Debug\refactor.xml
-C:\Users\aweso\Documents\Github\TimsGameReview\TimsGameReviews\obj\Debug\postdeploy.sql
-C:\Users\aweso\Documents\Github\TimsGameReview\TimsGameReviews\obj\Debug\predeploy.sql
 C:\Users\aweso\Documents\Github\TimsGameReview\TimsGameReviews\obj\Debug\TimsGameReviews.dll
 C:\Users\aweso\Documents\Github\TimsGameReview\TimsGameReviews\obj\Debug\TimsGameReviews.pdb

@@ -1,0 +1,5 @@
+C:\Users\aweso\Documents\Github\TimsGameReview\TimsGameReviews\bin\Release\TimsGameReviews.dacpac
+C:\Users\aweso\Documents\Github\TimsGameReview\TimsGameReviews\bin\Release\TimsGameReviews.dll
+C:\Users\aweso\Documents\Github\TimsGameReview\TimsGameReviews\bin\Release\TimsGameReviews.pdb
+C:\Users\aweso\Documents\Github\TimsGameReview\TimsGameReviews\obj\Release\TimsGameReviews.dll
+C:\Users\aweso\Documents\Github\TimsGameReview\TimsGameReviews\obj\Release\TimsGameReviews.pdb

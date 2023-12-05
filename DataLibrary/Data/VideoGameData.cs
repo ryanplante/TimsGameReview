@@ -5,7 +5,7 @@ using DataLibrary.Models;
 
 namespace DataLibrary.Data
 {
-    public class VideoGameData
+    public class VideoGameData : IVideoGameData
     {
         private readonly IDataAccess _dataAccess;
         private readonly ConnectionStringData _connectionString;
@@ -16,9 +16,9 @@ namespace DataLibrary.Data
             _connectionString = connectionString;
         }
 
-        public Task<List<VideoGameModel>> GetGame()
+        public async Task<List<VideoGameModel>> GetGames()
         {
-            return _dataAccess.LoadData<VideoGameModel, dynamic>("dbo.sp_AllGames", new { }, _connectionString.SqlConnectionName);
+            return await _dataAccess.LoadData<VideoGameModel, dynamic>("dbo.sp_AllGames", new { }, _connectionString.SqlConnectionName);
         }
     }
 }
