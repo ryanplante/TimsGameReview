@@ -40,6 +40,8 @@ namespace GameAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GameAPI", Version = "v1" });
             });
+            services.AddOptions();
+            //services.Configure<Microsoft.Extensions.Configuration.ConfigurationBinderException>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
