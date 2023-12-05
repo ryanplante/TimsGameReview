@@ -7,6 +7,6 @@ namespace DataLibrary.Data
     {
         public Task<int> DeleteRating(int ratingId);
         public Task<RatingModel> GetRatingById(int ratingId);
-        public Task<int> RateGame(VideoGameModel game, RatingModel rate);
+        public Task<int> RateGame(GameRatingModel gr);
     }
 }

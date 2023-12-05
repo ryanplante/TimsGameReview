@@ -21,17 +21,18 @@ namespace DataLibrary.Data
             _connectionString = connectionString;
         }
 
-        public async Task<int> RateGame(VideoGameModel game, RatingModel rate)
+        public async Task<int> RateGame(GameRatingModel gr)
         {
             DynamicParameters p = new DynamicParameters();
 
-            p.Add("GameID", game.Id);
-            p.Add("Rating", rate.Rating);
-            p.Add("Review", rate.Review);
+            p.Add("CustID", gr.CustID); 
+            p.Add("GameID", gr.GameID);
+            p.Add("Rating", gr.Rating);
+            p.Add("Review", gr.Review);
 
             p.Add("Id", DbType.Int32, direction: ParameterDirection.Output);
 
-            await _dataAccess.SaveData("sp_AddReview", p, _connectionString.SqlConnectionName);
+            await _dataAccess.SaveData("spAddReview", p, _connectionString.SqlConnectionName);
 
             return p.Get<int>("Id");
         }

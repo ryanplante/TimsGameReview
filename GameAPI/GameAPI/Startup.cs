@@ -36,6 +36,11 @@ namespace GameAPI
             services.AddSingleton<IVideoGameData, VideoGameData>();
             services.AddSingleton<IUserData, UserData>();
             services.AddSingleton<IGenreData, GenreData>();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigin", builder => builder.AllowAnyOrigin()
+                .AllowAnyMethod().AllowAnyHeader());
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GameAPI", Version = "v1" });
