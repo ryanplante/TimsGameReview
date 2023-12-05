@@ -5,8 +5,8 @@ namespace DataLibrary.Data
 {
     public interface IGameRatingData
     {
-        Task<int> DeleteRating(int ratingId);
-        Task<RatingModel> GetRatingById(int ratingId);
-        Task<int> RateGame(VideoGameModel game, RatingModel rate);
+        public Task<int> DeleteRating(int ratingId);
+        public Task<RatingModel> GetRatingById(int ratingId);
+        public Task<int> RateGame(VideoGameModel game, RatingModel rate);
     }
 }

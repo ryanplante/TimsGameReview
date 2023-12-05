@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataLibrary.Data
 {
-    interface IUserData
+    public interface IUserData
     {
-        Task<UsersModel> VerifyPassword(string userName, string password);
+        public Task<UsersModel> VerifyPassword(string userName, string password);
     }
 }

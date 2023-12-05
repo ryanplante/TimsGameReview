@@ -6,6 +6,6 @@ namespace DataLibrary.Data
 {
     public interface IVideoGameData
     {
-        Task<List<VideoGameModel>> GetGames();
+        public Task<List<VideoGameModel>> GetGames();
     }
 }

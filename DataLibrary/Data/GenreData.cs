@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataLibrary.Data
 {
-    class GenreData : IGenreData
+    public class GenreData : IGenreData
     {
         private readonly IDataAccess _dataAccess;
         private readonly ConnectionStringData _connectionString;

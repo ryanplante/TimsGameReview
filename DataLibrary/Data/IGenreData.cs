@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataLibrary.Data
 {
-    interface IGenreData
+    public interface IGenreData
     {
         public Task<List<GenreModel>> GetGenres();
 

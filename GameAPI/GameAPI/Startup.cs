@@ -28,12 +28,14 @@ namespace GameAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
             services.AddSingleton(new ConnectionStringData { SqlConnectionName = "Default" });
 
             services.AddSingleton<IDataAccess, SqlDb>();
             services.AddSingleton<IGameRatingData, GameRatingData>();
             services.AddSingleton<IVideoGameData, VideoGameData>();
-            services.AddControllers();
+            services.AddSingleton<IUserData, UserData>();
+            services.AddSingleton<IGenreData, GenreData>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GameAPI", Version = "v1" });
