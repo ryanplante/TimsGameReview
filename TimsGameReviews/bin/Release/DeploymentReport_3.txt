@@ -1,0 +1,27 @@
+﻿** Highlights
+     Tables that will be recreated with data migrated
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Genre] (Table)
+       [dbo].[Rating] (Table)
+       [dbo].[Users] (Table)
+       [dbo].[VideoGame] (Table)
+       [dbo].[sp_AllGames] (Procedure)
+       [dbo].[sp_AllGenres] (Procedure)
+       [dbo].[sp_VerifyPassword] (Procedure)
+       [dbo].[spAddGame] (Procedure)
+       [dbo].[spAddReview] (Procedure)
+       [dbo].[spGame_Delete] (Procedure)
+       [dbo].[spGetGameRating] (Procedure)
+       [dbo].[spRatings_Delete] (Procedure)
+       [dbo].[spRatings_GetById] (Procedure)
+
+** Supporting actions
