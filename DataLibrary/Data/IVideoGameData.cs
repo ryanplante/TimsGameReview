@@ -7,5 +7,7 @@ namespace DataLibrary.Data
     public interface IVideoGameData
     {
         public Task<List<VideoGameModel>> GetGames();
+
+        public Task<int> DeleteGame(int gameId);
     }
 }

@@ -10,3 +10,16 @@ C:\Users\aweso\Documents\Github\TimsGameReview\DataLibrary\obj\Release\net5.0\Da
 C:\Users\aweso\Documents\Github\TimsGameReview\DataLibrary\obj\Release\net5.0\DataLibrary.dll
 C:\Users\aweso\Documents\Github\TimsGameReview\DataLibrary\obj\Release\net5.0\ref\DataLibrary.dll
 C:\Users\aweso\Documents\Github\TimsGameReview\DataLibrary\obj\Release\net5.0\DataLibrary.pdb
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\bin\Release\net5.0\DataLibrary.deps.json
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\bin\Release\net5.0\DataLibrary.dll
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\bin\Release\net5.0\DataLibrary.pdb
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\obj\Release\net5.0\DataLibrary.csproj.AssemblyReference.cache
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\obj\Release\net5.0\DataLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\obj\Release\net5.0\DataLibrary.AssemblyInfoInputs.cache
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\obj\Release\net5.0\DataLibrary.AssemblyInfo.cs
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\obj\Release\net5.0\DataLibrary.csproj.CoreCompileInputs.cache
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\obj\Release\net5.0\DataLibrary.sourcelink.json
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\obj\Release\net5.0\DataLibrary.dll
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\obj\Release\net5.0\refint\DataLibrary.dll
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\obj\Release\net5.0\DataLibrary.pdb
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\obj\Release\net5.0\ref\DataLibrary.dll
