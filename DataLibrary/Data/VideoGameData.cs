@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DataLibrary.Models;
+using Dapper;
+using System.Data;
 
 namespace DataLibrary.Data
 {
@@ -24,6 +26,22 @@ namespace DataLibrary.Data
         public Task<int> DeleteGame(int gameId)
         {
             return _dataAccess.SaveData("spGame_Delete", new { Id = gameId }, _connectionString.SqlConnectionName);
+        }
+
+        public async Task<int> AddGame(VideoGameModel model)
+        {
+            DynamicParameters p = new DynamicParameters();
+
+            p.Add("Title", model.Title);
+            p.Add("Description", model.Description);
+            p.Add("Price", model.Price);
+            p.Add("Genre", model.Genre);
+
+            p.Add("Id", DbType.Int32, direction: ParameterDirection.Output);
+
+            await _dataAccess.SaveData("sp_AddGame", p, _connectionString.SqlConnectionName);
+
+            return p.Get<int>("Id");
         }
     }
 }

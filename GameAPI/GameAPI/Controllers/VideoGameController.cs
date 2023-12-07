@@ -39,6 +39,22 @@ namespace GameAPI.Controllers
             }
         }
 
+        [HttpPost("AddGame")]
+        public async Task<IActionResult> AddGame([FromBody] VideoGameModel addGameRequest)
+        {
+            try
+            {
+                int result = await _videoGameData.AddGame(addGameRequest);
+
+                // Adjust the response as needed based on the result of the RateGame operation.
+                return CreatedAtAction(nameof(Get), new { Id = result }, result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
+            }
+        }
+
         [HttpDelete("DeleteGame/{gameId}")]
         public async Task<IActionResult> Delete(int gameId)
         {
@@ -46,12 +62,12 @@ namespace GameAPI.Controllers
             {
                 int affectedRows = await _videoGameData.DeleteGame(gameId);
 
-                if (affectedRows > 0)
+                if (affectedRows < 0)
                 {
-                    return NoContent();
+                    return NotFound($"Game with ID {gameId} not found");
                 }
 
-                return NotFound($"Game with ID {gameId} not found");
+                return Ok();
             }
             catch (Exception ex)
             {
