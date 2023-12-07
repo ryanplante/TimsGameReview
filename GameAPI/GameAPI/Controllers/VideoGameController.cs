@@ -38,5 +38,25 @@ namespace GameAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
             }
         }
+
+        [HttpDelete("DeleteGame/{gameId}")]
+        public async Task<IActionResult> Delete(int gameId)
+        {
+            try
+            {
+                int affectedRows = await _videoGameData.DeleteGame(gameId);
+
+                if (affectedRows > 0)
+                {
+                    return NoContent();
+                }
+
+                return NotFound($"Game with ID {gameId} not found");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
+            }
+        }
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DataLibrary")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56096ee72a09de0a3fff0ef4da9bdb80aaa263f7")]
 [assembly: System.Reflection.AssemblyProductAttribute("DataLibrary")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DataLibrary")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,14 @@
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\bin\Release\net5.0\publish\DataLibrary.dll
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\bin\Release\net5.0\publish\DataLibrary.deps.json
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\bin\Release\net5.0\publish\DataLibrary.pdb
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\bin\Release\net5.0\publish\Dapper.dll
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\bin\Release\net5.0\publish\Microsoft.Extensions.Configuration.dll
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\bin\Release\net5.0\publish\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\bin\Release\net5.0\publish\Microsoft.Extensions.Primitives.dll
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\bin\Release\net5.0\publish\System.Data.SqlClient.dll
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\bin\Release\net5.0\publish\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\bin\Release\net5.0\publish\runtimes\win-arm64\native\sni.dll
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\bin\Release\net5.0\publish\runtimes\win-x64\native\sni.dll
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\bin\Release\net5.0\publish\runtimes\win-x86\native\sni.dll
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\bin\Release\net5.0\publish\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\knigh\OneDrive\Desktop\TimsGameReview\DataLibrary\bin\Release\net5.0\publish\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
