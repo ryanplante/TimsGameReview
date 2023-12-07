@@ -20,7 +20,7 @@ namespace DataLibrary.Data
         }
         public Task<List<GenreModel>> GetGenres()
         {
-            return _dataAccess.LoadData<GenreModel, dynamic>("dbo.sp_AllGames", new { }, _connectionString.SqlConnectionName);
+            return _dataAccess.LoadData<GenreModel, dynamic>("dbo.sp_AllGenres", new { }, _connectionString.SqlConnectionName);
         }
     }
 }
