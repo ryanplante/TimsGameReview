@@ -254,6 +254,144 @@
 				</Entry>
 			</Relationship>
 		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[sp_AddGame]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+BEGIN
+    SET NOCOUNT ON;
+       -- If not exists, then insert the new review
+     INSERT INTO dbo.[VideoGame] (Title, Description, Price, Genre)
+        VALUES (@Title, @Description, @Price, @Genre);
+
+        SET @Id = SCOPE_IDENTITY();
+    END;]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[VideoGame]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[VideoGame].[Title]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[VideoGame].[Description]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[VideoGame].[Price]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[VideoGame].[Genre]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[sp_AddGame].[@Title]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[sp_AddGame].[@Description]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[sp_AddGame].[@Price]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[sp_AddGame].[@Genre]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[sp_AddGame].[@Id]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[sp_AddGame].[@Title]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[sp_AddGame].[@Description]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[sp_AddGame].[@Price]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Precision" Value="53" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[float]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[sp_AddGame].[@Genre]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[sp_AddGame].[@Id]">
+						<Property Name="IsOutput" Value="True" />
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="409" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[sp_AddGame]&#xD;&#xA;    @Title NVARCHAR(50),&#xD;&#xA;    @Description NVARCHAR(MAX),&#xD;&#xA;    @Price FLOAT,&#xD;&#xA;    @Genre INT,&#xD;&#xA;    @Id INT OUTPUT&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[sp_AllGames]">
 			<Property Name="BodyScript">
 				<Value><![CDATA[
@@ -394,134 +532,6 @@ END;]]></Value>
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[sp_VerifyPassword]&#xD;&#xA;    @UName NVARCHAR(50),&#xD;&#xA;    @Password NVARCHAR(50)&#xD;&#xA;AS" />
-			</Annotation>
-		</Element>
-		<Element Type="SqlProcedure" Name="[dbo].[spAddGame]">
-			<Property Name="BodyScript">
-				<Value><![CDATA[
-BEGIN
-    SET NOCOUNT ON;
-       -- If not exists, then insert the new review
-     INSERT INTO dbo.VideoGames (Title, Description, Price, Genre)
-        VALUES (@Title, @Description, @Price, @Genre);
-
-        SET @Id = SCOPE_IDENTITY();
-    END;]]></Value>
-			</Property>
-			<Property Name="IsAnsiNullsOn" Value="True" />
-			<Relationship Name="BodyDependencies">
-				<Entry />
-				<Entry />
-				<Entry />
-				<Entry />
-				<Entry />
-				<Entry>
-					<References Name="[dbo].[spAddGame].[@Title]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[spAddGame].[@Description]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[spAddGame].[@Price]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[spAddGame].[@Genre]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[spAddGame].[@Id]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="Parameters">
-				<Entry>
-					<Element Type="SqlSubroutineParameter" Name="[dbo].[spAddGame].[@Title]">
-						<Relationship Name="Type">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Property Name="Length" Value="50" />
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSubroutineParameter" Name="[dbo].[spAddGame].[@Description]">
-						<Relationship Name="Type">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Property Name="IsMax" Value="True" />
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSubroutineParameter" Name="[dbo].[spAddGame].[@Price]">
-						<Relationship Name="Type">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Property Name="Precision" Value="53" />
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[float]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSubroutineParameter" Name="[dbo].[spAddGame].[@Genre]">
-						<Relationship Name="Type">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSubroutineParameter" Name="[dbo].[spAddGame].[@Id]">
-						<Property Name="IsOutput" Value="True" />
-						<Relationship Name="Type">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="Schema">
-				<Entry>
-					<References ExternalSource="BuiltIns" Name="[dbo]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="407" />
-				<Property Name="StartLine" Value="1" />
-				<Property Name="StartColumn" Value="1" />
-				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[spAddGame]&#xD;&#xA;    @Title NVARCHAR(50),&#xD;&#xA;    @Description NVARCHAR(MAX),&#xD;&#xA;    @Price FLOAT,&#xD;&#xA;    @Genre INT,&#xD;&#xA;    @Id INT OUTPUT&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[spAddReview]">
