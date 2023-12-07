@@ -2,11 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-using DataLibrary.Models; // Assuming UserModel is in the Models namespace
+// Assuming UserModel is in the Models namespace
 
 namespace GameAPI.Controllers
 {
@@ -21,12 +19,12 @@ namespace GameAPI.Controllers
             _userData = userData;
         }
 
-        [HttpGet("VerifyPassword")]
-        public async Task<IActionResult> VerifyPassword(string userName, string password)
+        [HttpPost("VerifyPassword")]
+        public async Task<IActionResult> VerifyPassword([FromBody] Models.LoginModel loginModel)
         {
             try
             {
-                var result = await _userData.VerifyPassword(userName, password);
+                var result = await _userData.VerifyPassword(loginModel.Username, loginModel.Password);
 
                 if (result != null)
                 {
@@ -47,4 +45,3 @@ namespace GameAPI.Controllers
         }
     }
 }
-

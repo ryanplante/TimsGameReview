@@ -75,6 +75,7 @@
     <Build Include="dbo\Stored Procedures\spRatings_Delete.sql" />
     <Build Include="dbo\Stored Procedures\spRatings_GetById.sql" />
     <Build Include="dbo\Stored Procedures\spGame_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\sp_AddGame.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment.sql" />

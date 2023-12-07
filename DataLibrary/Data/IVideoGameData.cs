@@ -9,5 +9,7 @@ namespace DataLibrary.Data
         public Task<List<VideoGameModel>> GetGames();
 
         public Task<int> DeleteGame(int gameId);
+
+        public Task<int> AddGame(VideoGameModel model);
     }
 }
