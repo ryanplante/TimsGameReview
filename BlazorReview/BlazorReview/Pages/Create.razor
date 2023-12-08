@@ -1,0 +1,103 @@
+﻿@page "/create"
+@using System.Text.Json
+@using System.Text
+@inject HttpClient HttpClient
+
+<h3>Create</h3>
+
+<select @bind="selectedGameId">
+    <option value="0">Select a game</option>
+    @foreach (GameModel game in games)
+    {
+        <option value="@game.Id">@game.Title</option>
+    }
+</select>
+
+@if (selectedGame != null)
+{
+    <div>
+        <h4>@selectedGame.Title</h4>
+        <h6>Description: @selectedGame.Description</h6>
+    </div>
+    <div>
+        <label for="rating">Rating (1-5):</label>
+        <input type="number" id="rating" @bind="userRating" min="1" max="5" />
+    </div>
+    <div>
+        <label for="review">Review:</label>
+        <textarea id="review" @bind="userReview"></textarea>
+    </div>
+    <button @onclick="SubmitReview">Submit Review</button>
+
+    @if (!string.IsNullOrEmpty(message))
+    {
+        <div>@message</div>
+    }
+}
+
+@code {
+    private List<GameModel> games = new List<GameModel>();
+    private int _selectedGameId;
+    private GameModel selectedGame;
+    private int userRating;
+    private string userReview;
+
+    private int selectedGameId
+    {
+        get => _selectedGameId;
+        set
+        {
+            if (_selectedGameId != value)
+            {
+                _selectedGameId = value;
+                selectedGame = games.FirstOrDefault(g => g.Id == _selectedGameId);
+            }
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Submit();
+    }
+
+    private async Task Submit()
+    {
+        List<GameModel> response = await HttpClient.GetFromJsonAsync<List<GameModel>>("api/VideoRating/GetGames");
+
+        if (response != null)
+        {
+            games = response;
+        }
+    }
+
+    private string message;
+
+    private async Task SubmitReview()
+    {
+        var reviewData = new { CustID = 0, GameID = _selectedGameId, Rating = userRating, review = userReview };
+        
+        string json = JsonSerializer.Serialize(reviewData);
+        StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        HttpResponseMessage response = await HttpClient.PostAsync("api/GameRating/RateGame", content);
+
+        if (response.IsSuccessStatusCode)
+        {
+            message = "Your review was successfully submitted.";
+            await RefreshPage(); // Refresh the page or re-fetch the data
+        }
+        else
+        {
+            message = "There was an error submitting your review. Please try again.";
+        }
+    }
+
+    private async Task RefreshPage()
+    {
+        userRating = 0;
+        userReview = string.Empty;
+        _selectedGameId = 0; // Reset the game selection
+        
+        await Submit(); // Re-fetch the games list
+    }
+}

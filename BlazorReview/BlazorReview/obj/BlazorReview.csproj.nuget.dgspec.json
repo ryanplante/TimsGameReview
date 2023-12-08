@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aweso\\source\\repos\\BlazorReview\\BlazorReview\\BlazorReview.csproj": {}
+    "C:\\Users\\knigh\\OneDrive\\Desktop\\TimsGameReview\\BlazorReview\\BlazorReview\\BlazorReview.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aweso\\source\\repos\\BlazorReview\\BlazorReview\\BlazorReview.csproj": {
+    "C:\\Users\\knigh\\OneDrive\\Desktop\\TimsGameReview\\BlazorReview\\BlazorReview\\BlazorReview.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aweso\\source\\repos\\BlazorReview\\BlazorReview\\BlazorReview.csproj",
+        "projectUniqueName": "C:\\Users\\knigh\\OneDrive\\Desktop\\TimsGameReview\\BlazorReview\\BlazorReview\\BlazorReview.csproj",
         "projectName": "BlazorReview",
-        "projectPath": "C:\\Users\\aweso\\source\\repos\\BlazorReview\\BlazorReview\\BlazorReview.csproj",
-        "packagesPath": "C:\\Users\\aweso\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aweso\\source\\repos\\BlazorReview\\BlazorReview\\obj\\",
+        "projectPath": "C:\\Users\\knigh\\OneDrive\\Desktop\\TimsGameReview\\BlazorReview\\BlazorReview\\BlazorReview.csproj",
+        "packagesPath": "C:\\Users\\knigh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\knigh\\OneDrive\\Desktop\\TimsGameReview\\BlazorReview\\BlazorReview\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\aweso\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\knigh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -65,6 +61,18 @@
               "target": "Package",
               "version": "[8.0.0, )"
             },
+            "Microsoft.NET.ILLink.Analyzers": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.100-1.23211.1, )",
+              "autoReferenced": true
+            },
+            "Microsoft.NET.ILLink.Tasks": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.100-1.23211.1, )",
+              "autoReferenced": true
+            },
             "System.Net.Http.Json": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -80,7 +88,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -95,7 +104,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
