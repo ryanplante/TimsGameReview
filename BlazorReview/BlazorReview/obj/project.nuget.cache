@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "w8XlqOdU3k3u/gaXCV+09vW1erymn93EOI9O3lEpLWBDyZVC6oJpVfTS1Qd0fC3XMgMi8a/5Gy1XpcjQHMp8Zw==",
+  "dgSpecHash": "/xw4Y1NrbgmY5QcuAib12LwzhSwsRGtqRZWUzNi8SIYy9eupVRlEFDWRePbpqA1qoBbEtAFwPKjst9o6dn3EBg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\aweso\\source\\repos\\BlazorReview\\BlazorReview\\BlazorReview.csproj",
+  "projectFilePath": "C:\\Users\\aweso\\Documents\\Github\\TimsGameReview\\BlazorReview\\BlazorReview\\BlazorReview.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aweso\\.nuget\\packages\\blazored.sessionstorage\\2.1.0\\blazored.sessionstorage.2.1.0.nupkg.sha512",
     "C:\\Users\\aweso\\.nuget\\packages\\bunit.core\\1.1.5\\bunit.core.1.1.5.nupkg.sha512",

@@ -23,9 +23,9 @@ namespace DataLibrary.Data
             return await _dataAccess.LoadData<VideoGameModel, dynamic>("dbo.sp_AllGames", new { }, _connectionString.SqlConnectionName);
         }
 
-        public Task<int> DeleteGame(int gameId)
+        public async Task<int> DeleteGame(int gameId)
         {
-            return _dataAccess.SaveData("spGame_Delete", new { Id = gameId }, _connectionString.SqlConnectionName);
+            return await _dataAccess.SaveData("spGame_Delete", new { Id = gameId }, _connectionString.SqlConnectionName);
         }
 
         public async Task<int> AddGame(VideoGameModel model)

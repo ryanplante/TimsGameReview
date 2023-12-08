@@ -60,12 +60,7 @@ namespace GameAPI.Controllers
         {
             try
             {
-                int affectedRows = await _videoGameData.DeleteGame(gameId);
-
-                if (affectedRows < 0)
-                {
-                    return NotFound($"Game with ID {gameId} not found");
-                }
+                await _videoGameData.DeleteGame(gameId);
 
                 return Ok();
             }

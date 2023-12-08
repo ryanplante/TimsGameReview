@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,9 +38,9 @@ namespace DataLibrary.Data
             return p.Get<int>("Id");
         }
 
-        public Task<int> DeleteRating(int ratingId)
+        public async Task<int> DeleteRating(int ratingId)
         {
-            return _dataAccess.SaveData("spRatings_Delete", new { Id = ratingId }, _connectionString.SqlConnectionName);
+            return await _dataAccess.SaveData("spRatings_Delete", new { Id = ratingId }, _connectionString.SqlConnectionName);
         }
 
         public async Task<RatingModel> GetRatingById(int ratingId)
@@ -47,6 +48,13 @@ namespace DataLibrary.Data
             var recs = await _dataAccess.LoadData<RatingModel, dynamic>("spRatings_GetById", new { Id = ratingId }, _connectionString.SqlConnectionName);
 
             return recs.FirstOrDefault();
+        }
+
+        public async Task<List<RatingModel>> GetGameRating(int gameID)
+        {
+            var recs = await _dataAccess.LoadData<RatingModel, dynamic>("spGetGameRating", new { GameID = gameID }, _connectionString.SqlConnectionName);
+
+            return recs;
         }
     }
 }

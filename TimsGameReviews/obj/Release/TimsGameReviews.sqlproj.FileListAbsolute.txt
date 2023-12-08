@@ -13,3 +13,4 @@ C:\Users\knigh\OneDrive\Desktop\TimsGameReview\TimsGameReviews\obj\Release\Model
 C:\Users\knigh\OneDrive\Desktop\TimsGameReview\TimsGameReviews\obj\Release\refactor.xml
 C:\Users\knigh\OneDrive\Desktop\TimsGameReview\TimsGameReviews\obj\Release\postdeploy.sql
 C:\Users\knigh\OneDrive\Desktop\TimsGameReview\TimsGameReviews\obj\Release\predeploy.sql
+C:\Users\aweso\Documents\Github\TimsGameReview\TimsGameReviews\obj\Release\TimsGameReviews.sqlproj.AssemblyReference.cache

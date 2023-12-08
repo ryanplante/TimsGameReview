@@ -40,21 +40,38 @@ namespace GameAPI.Controllers
             }
         }
 
+        [HttpGet("GetGameRating/{gameID}")]
+        public async Task<IActionResult> GetGameRating(int gameID)
+        {
+            try
+            {
+                var result = await _gameRatingData.GetGameRating(gameID);
+
+                if (result != null)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return NotFound($"Rating with game ID {gameID} not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex);
+            }
+        }
+
+
+
+
         [HttpDelete("DeleteRating/{ratingId}")]
         public async Task<IActionResult> Delete(int ratingId)
         {
             try
             {
-                var affectedRows = await _gameRatingData.DeleteRating(ratingId);
-
-                if (affectedRows > 0)
-                {
-                    return NoContent();
-                }
-                else
-                {
-                    return NotFound($"Rating with ID {ratingId} not found");
-                }
+                await _gameRatingData.DeleteRating(ratingId);
+                return Ok();
             }
             catch (Exception ex)
             {
