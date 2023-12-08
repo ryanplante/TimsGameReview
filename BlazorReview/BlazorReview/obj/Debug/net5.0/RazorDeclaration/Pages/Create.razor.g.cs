@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace BlazorReview
+namespace BlazorReview.Pages
 {
     #line hidden
     using System;
@@ -96,13 +96,100 @@ using BlazorReview.Models;
 #line default
 #line hidden
 #nullable disable
-    public partial class _Imports : System.Object
+#nullable restore
+#line 2 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\Pages\Create.razor"
+using System.Text.Json;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\Pages\Create.razor"
+using System.Text;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/create")]
+    public partial class Create : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
-        protected void Execute()
+        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 38 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\Pages\Create.razor"
+       
+    private List<GameModel> games = new List<GameModel>();
+    private int _selectedGameId;
+    private GameModel selectedGame;
+    private int userRating;
+    private string userReview;
+
+    private int selectedGameId
+    {
+        get => _selectedGameId;
+        set
+        {
+            if (_selectedGameId != value)
+            {
+                _selectedGameId = value;
+                selectedGame = games.FirstOrDefault(g => g.Id == _selectedGameId);
+            }
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Submit();
+    }
+
+    private async Task Submit()
+    {
+        List<GameModel> response = await HttpClient.GetFromJsonAsync<List<GameModel>>("api/VideoRating/GetGames");
+
+        if (response != null)
+        {
+            games = response;
+        }
+    }
+
+    private string message;
+
+    private async Task SubmitReview()
+    {
+        var reviewData = new { CustID = 0, GameID = _selectedGameId, Rating = userRating, review = userReview };
+        
+        string json = JsonSerializer.Serialize(reviewData);
+        StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        HttpResponseMessage response = await HttpClient.PostAsync("api/GameRating/RateGame", content);
+
+        if (response.IsSuccessStatusCode)
+        {
+            message = "Your review was successfully submitted.";
+            await RefreshPage(); // Refresh the page or re-fetch the data
+        }
+        else
+        {
+            message = "There was an error submitting your review. Please try again.";
+        }
+    }
+
+    private async Task RefreshPage()
+    {
+        userRating = 0;
+        userReview = string.Empty;
+        _selectedGameId = 0; // Reset the game selection
+        
+        await Submit(); // Re-fetch the games list
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient HttpClient { get; set; }
     }
 }
 #pragma warning restore 1591

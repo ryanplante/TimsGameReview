@@ -1326,3 +1326,7 @@ C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\obj\Deb
 C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\obj\Debug\net5.0\BlazorReview.dll
 C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\obj\Debug\net5.0\ref\BlazorReview.dll
 C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\obj\Debug\net5.0\BlazorReview.pdb
+C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\obj\Debug\net5.0\RazorDeclaration\Pages\Create.razor.g.cs
+C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\obj\Debug\net5.0\Razor\Pages\Create.razor.g.cs
+C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\obj\Debug\net5.0\RazorDeclaration\Pages\Reviews.razor.g.cs
+C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\obj\Debug\net5.0\Razor\Pages\Reviews.razor.g.cs

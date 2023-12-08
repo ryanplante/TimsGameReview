@@ -13,90 +13,90 @@ namespace BlazorReview.Shared
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\aweso\source\repos\BlazorReview\BlazorReview\_Imports.razor"
+#line 1 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\aweso\source\repos\BlazorReview\BlazorReview\_Imports.razor"
+#line 2 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\_Imports.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\aweso\source\repos\BlazorReview\BlazorReview\_Imports.razor"
+#line 3 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\aweso\source\repos\BlazorReview\BlazorReview\_Imports.razor"
+#line 4 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\aweso\source\repos\BlazorReview\BlazorReview\_Imports.razor"
+#line 5 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\aweso\source\repos\BlazorReview\BlazorReview\_Imports.razor"
+#line 6 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\aweso\source\repos\BlazorReview\BlazorReview\_Imports.razor"
+#line 7 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\_Imports.razor"
 using Microsoft.AspNetCore.Components.WebAssembly.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\aweso\source\repos\BlazorReview\BlazorReview\_Imports.razor"
+#line 8 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\aweso\source\repos\BlazorReview\BlazorReview\_Imports.razor"
+#line 9 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\_Imports.razor"
 using BlazorReview;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\aweso\source\repos\BlazorReview\BlazorReview\_Imports.razor"
+#line 10 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\_Imports.razor"
 using BlazorReview.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\aweso\source\repos\BlazorReview\BlazorReview\_Imports.razor"
+#line 11 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\_Imports.razor"
 using Blazored.SessionStorage;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\aweso\source\repos\BlazorReview\BlazorReview\_Imports.razor"
+#line 12 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\_Imports.razor"
 using BlazorReview.Models;
 
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase, IDisposable
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -104,20 +104,48 @@ using BlazorReview.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "C:\Users\aweso\source\repos\BlazorReview\BlazorReview\Shared\NavMenu.razor"
+#line 41 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
-
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private bool IsAdmin = false;
+    private System.Threading.Timer _timer;
 
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
     }
 
+    protected override async Task OnInitializedAsync()
+    {
+        await CheckAdminStatus();
+        _timer = new System.Threading.Timer(async _ =>
+        {
+            await CheckAdminStatus();
+        }, null, 0, 5000); // Re-check every 5 seconds
+    }
+
+    private async Task CheckAdminStatus()
+    {
+        var isAdminNow = await SessionStorage.GetItemAsStringAsync("PermissionLevel") == "2";
+        if (isAdminNow != IsAdmin)
+        {
+            IsAdmin = isAdminNow;
+            StateHasChanged();
+        }
+    }
+
+    public void Dispose()
+    {
+        _timer?.Dispose();
+    }
+
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private Blazored.SessionStorage.ISessionStorageService SessionStorage { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager Navigation { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient HttpClient { get; set; }
     }
 }
 #pragma warning restore 1591

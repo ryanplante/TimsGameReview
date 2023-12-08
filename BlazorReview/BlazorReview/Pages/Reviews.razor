@@ -1,0 +1,43 @@
+﻿@page "/reviews"
+@inject GameService GameService
+
+<h3>Game Reviews</h3>
+
+@if (games == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    foreach (var game in games)
+    {
+        <h4>@game.Title</h4>
+        <p>@game.Description</p>
+        <p>Average Rating: @gameRatings[game.Id]</p>
+    }
+}
+
+@code {
+    private List<GameModel> games;
+    private Dictionary<int, string> gameRatings = new Dictionary<int, string>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        games = await GameService.GetGamesAsync();
+        foreach (var game in games)
+        {
+            gameRatings[game.Id] = await GetAverageRatingAsync(game.Id);
+        }
+    }
+
+    private async Task<string> GetAverageRatingAsync(int gameId)
+    {
+        var ratings = await GameService.GetGameRatingsAsync(gameId);
+        if (ratings.Any())
+        {
+            double avgRating = ratings.Average(r => r.Rating);
+            return avgRating.ToString("0.0");
+        }
+        return "Not rated";
+    }
+}

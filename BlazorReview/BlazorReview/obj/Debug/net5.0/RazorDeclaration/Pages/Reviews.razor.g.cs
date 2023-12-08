@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace BlazorReview
+namespace BlazorReview.Pages
 {
     #line hidden
     using System;
@@ -96,13 +96,44 @@ using BlazorReview.Models;
 #line default
 #line hidden
 #nullable disable
-    public partial class _Imports : System.Object
+    [Microsoft.AspNetCore.Components.RouteAttribute("/reviews")]
+    public partial class Reviews : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
-        protected void Execute()
+        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 20 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\Pages\Reviews.razor"
+       
+    private List<GameModel> games;
+    private Dictionary<int, string> gameRatings = new Dictionary<int, string>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        games = await GameService.GetGamesAsync();
+        foreach (var game in games)
+        {
+            gameRatings[game.Id] = await GetAverageRatingAsync(game.Id);
+        }
+    }
+
+    private async Task<string> GetAverageRatingAsync(int gameId)
+    {
+        var ratings = await GameService.GetGameRatingsAsync(gameId);
+        if (ratings.Any())
+        {
+            double avgRating = ratings.Average(r => r.Rating);
+            return avgRating.ToString("0.0");
+        }
+        return "Not rated";
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private GameService GameService { get; set; }
     }
 }
 #pragma warning restore 1591
