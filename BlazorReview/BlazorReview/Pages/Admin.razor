@@ -1,0 +1,70 @@
+﻿@page "/admin"
+@inject HttpClient HttpClient
+@inject NavigationManager Navigation
+
+<h3>Game Admin</h3>
+
+@if (games == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Genre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var game in games)
+            {
+                <tr>
+                    <td>@game.title</td>
+                    <td>@game.description</td>
+                    <td>@game.price</td>
+                    <td>@game.genre</td>
+                    <td>
+                        <button class="btn btn-primary" @onclick="() => EditGame(game.id)">Edit</button>
+                        <button class="btn btn-danger" @onclick="() => DeleteGame(game.id)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<GameModel> games;
+
+    protected override async Task OnInitializedAsync()
+    {
+        games = await HttpClient.GetFromJsonAsync<List<GameModel>>("/api/VideoRating/GetGames");
+    }
+
+    private void EditGame(int gameId)
+    {
+        Navigation.NavigateTo($"/edit-game/{gameId}");
+    }
+
+    private async Task DeleteGame(int gameId)
+    {
+        // Call API to delete the game
+        var response = await HttpClient.DeleteAsync($"/api/VideoRating/DeleteGame/{gameId}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            // Reload the game list or remove the game from the list locally
+            games = games.Where(game => game.id != gameId).ToList();
+        }
+        else
+        {
+            // Handle error
+        }
+    }
+}
+

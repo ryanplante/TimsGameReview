@@ -11,9 +11,9 @@ else
 {
     foreach (var game in games)
     {
-        <h4>@game.Title</h4>
-        <p>@game.Description</p>
-        <p>Average Rating: @gameRatings[game.Id]</p>
+        <h4>@game.title</h4>
+        <p>@game.description</p>
+        <p>Average Rating: @gameRatings[game.id]</p>
     }
 }
 
@@ -26,7 +26,7 @@ else
         games = await GameService.GetGamesAsync();
         foreach (var game in games)
         {
-            gameRatings[game.Id] = await GetAverageRatingAsync(game.Id);
+            gameRatings[game.id] = await GetAverageRatingAsync(game.id);
         }
     }
 

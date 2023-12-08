@@ -96,8 +96,8 @@ using BlazorReview.Models;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/reviews")]
-    public partial class Reviews : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/admin")]
+    public partial class Admin : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -105,35 +105,41 @@ using BlazorReview.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 20 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\Pages\Reviews.razor"
+#line 41 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\Pages\Admin.razor"
        
     private List<GameModel> games;
-    private Dictionary<int, string> gameRatings = new Dictionary<int, string>();
 
     protected override async Task OnInitializedAsync()
     {
-        games = await GameService.GetGamesAsync();
-        foreach (var game in games)
-        {
-            gameRatings[game.id] = await GetAverageRatingAsync(game.id);
-        }
+        games = await HttpClient.GetFromJsonAsync<List<GameModel>>("/api/VideoRating/GetGames");
     }
 
-    private async Task<string> GetAverageRatingAsync(int gameId)
+    private void EditGame(int gameId)
     {
-        var ratings = await GameService.GetGameRatingsAsync(gameId);
-        if (ratings.Any())
+        Navigation.NavigateTo($"/edit-game/{gameId}");
+    }
+
+    private async Task DeleteGame(int gameId)
+    {
+        // Call API to delete the game
+        var response = await HttpClient.DeleteAsync($"/api/VideoRating/DeleteGame/{gameId}");
+
+        if (response.IsSuccessStatusCode)
         {
-            double avgRating = ratings.Average(r => r.Rating);
-            return avgRating.ToString("0.0");
+            // Reload the game list or remove the game from the list locally
+            games = games.Where(game => game.id != gameId).ToList();
         }
-        return "Not rated";
+        else
+        {
+            // Handle error
+        }
     }
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private GameService GameService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager Navigation { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient HttpClient { get; set; }
     }
 }
 #pragma warning restore 1591

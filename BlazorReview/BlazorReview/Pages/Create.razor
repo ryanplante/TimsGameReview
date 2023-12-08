@@ -9,15 +9,15 @@
     <option value="0">Select a game</option>
     @foreach (GameModel game in games)
     {
-        <option value="@game.Id">@game.Title</option>
+        <option value="@game.id">@game.title</option>
     }
 </select>
 
 @if (selectedGame != null)
 {
     <div>
-        <h4>@selectedGame.Title</h4>
-        <h6>Description: @selectedGame.Description</h6>
+        <h4>@selectedGame.title</h4>
+        <h6>Description: @selectedGame.description</h6>
     </div>
     <div>
         <label for="rating">Rating (1-5):</label>
@@ -50,7 +50,7 @@
             if (_selectedGameId != value)
             {
                 _selectedGameId = value;
-                selectedGame = games.FirstOrDefault(g => g.Id == _selectedGameId);
+                selectedGame = games.FirstOrDefault(g => g.id == _selectedGameId);
             }
         }
     }

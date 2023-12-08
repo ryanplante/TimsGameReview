@@ -135,7 +135,7 @@ using System.Text;
             if (_selectedGameId != value)
             {
                 _selectedGameId = value;
-                selectedGame = games.FirstOrDefault(g => g.Id == _selectedGameId);
+                selectedGame = games.FirstOrDefault(g => g.id == _selectedGameId);
             }
         }
     }

@@ -43,5 +43,24 @@ namespace DataLibrary.Data
 
             return p.Get<int>("Id");
         }
+
+        public async Task UpdateGame(VideoGameModel model)
+        {
+            DynamicParameters p = new DynamicParameters();
+
+            p.Add("Id", model.Id);
+            p.Add("Title", model.Title);
+            p.Add("Description", model.Description);
+            p.Add("Price", model.Price);
+            p.Add("Genre", model.Genre);
+
+            await _dataAccess.SaveData("sp_UpdateGame", p, _connectionString.SqlConnectionName);
+        }
+
+        public async Task<List<VideoGameModel>> GetByID(int GameID)
+        {
+            return await _dataAccess.LoadData<VideoGameModel, dynamic>("dbo.sp_GameByID", new {GameID = GameID }, _connectionString.SqlConnectionName);
+        }
+
     }
 }

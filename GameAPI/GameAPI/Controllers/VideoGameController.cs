@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace GameAPI.Controllers
@@ -39,6 +40,29 @@ namespace GameAPI.Controllers
             }
         }
 
+        [HttpGet("GetGame/{gameId}")]
+        public async Task<IActionResult> GetGame(int GameID)
+        {
+            try
+            {
+                var result = await _videoGameData.GetByID(GameID);
+
+                if (result != null && result.Any())
+                {
+                    return Ok(result.FirstOrDefault());
+                }
+
+                return NotFound($"Game with ID {GameID} not found.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
+            }
+        }
+
+
+
+
         [HttpPost("AddGame")]
         public async Task<IActionResult> AddGame([FromBody] VideoGameModel addGameRequest)
         {
@@ -69,5 +93,29 @@ namespace GameAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
             }
         }
+
+        [HttpPut("UpdateGame/{id}")]
+        public async Task<IActionResult> UpdateGame(int id, [FromBody] VideoGameModel updateGameRequest)
+        {
+            try
+            {
+                // Ensure the ID in the URL and the model are the same
+                if (id != updateGameRequest.Id)
+                {
+                    return BadRequest("ID mismatch");
+                }
+
+                await _videoGameData.UpdateGame(updateGameRequest);
+
+                // Return NoContent as the standard response for a successful PUT request
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception, if logging is set up
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
+            }
+        }
+
     }
 }

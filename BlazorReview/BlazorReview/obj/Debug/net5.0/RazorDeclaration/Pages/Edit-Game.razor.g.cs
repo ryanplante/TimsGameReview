@@ -96,8 +96,8 @@ using BlazorReview.Models;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/reviews")]
-    public partial class Reviews : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/edit-game/{GameId}")]
+    public partial class Edit_Game : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -105,35 +105,37 @@ using BlazorReview.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 20 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\Pages\Reviews.razor"
+#line 41 "C:\Users\aweso\Documents\Github\TimsGameReview\BlazorReview\BlazorReview\Pages\Edit-Game.razor"
        
-    private List<GameModel> games;
-    private Dictionary<int, string> gameRatings = new Dictionary<int, string>();
+    [Parameter]
+    public string GameId { get; set; }
+
+    private GameModel game;
 
     protected override async Task OnInitializedAsync()
     {
-        games = await GameService.GetGamesAsync();
-        foreach (var game in games)
-        {
-            gameRatings[game.id] = await GetAverageRatingAsync(game.id);
-        }
+        game = await HttpClient.GetFromJsonAsync<GameModel>($"/api/VideoRating/GetGame/{GameId}");
     }
 
-    private async Task<string> GetAverageRatingAsync(int gameId)
+    private async Task HandleValidSubmit()
     {
-        var ratings = await GameService.GetGameRatingsAsync(gameId);
-        if (ratings.Any())
+        var response = await HttpClient.PutAsJsonAsync($"/api/VideoRating/UpdateGame/{game.id}", game);
+
+        if (response.IsSuccessStatusCode)
         {
-            double avgRating = ratings.Average(r => r.Rating);
-            return avgRating.ToString("0.0");
+            Navigation.NavigateTo("/admin");
         }
-        return "Not rated";
+        else
+        {
+            // Handle errors
+        }
     }
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private GameService GameService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager Navigation { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient HttpClient { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -11,5 +11,8 @@ namespace DataLibrary.Data
         public Task<int> DeleteGame(int gameId);
 
         public Task<int> AddGame(VideoGameModel model);
+        public Task UpdateGame(VideoGameModel model);
+
+        public Task<List<VideoGameModel>> GetByID(int GameID);
     }
 }
