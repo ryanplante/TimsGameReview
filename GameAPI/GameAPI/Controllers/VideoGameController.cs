@@ -47,9 +47,9 @@ namespace GameAPI.Controllers
             {
                 var result = await _videoGameData.GetByID(GameID);
 
-                if (result != null && result.Any())
+                if (result != null)
                 {
-                    return Ok(result.FirstOrDefault());
+                    return Ok(result);
                 }
 
                 return NotFound($"Game with ID {GameID} not found.");

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DataLibrary.Models;
 using Dapper;
 using System.Data;
+using System.Linq;
 
 namespace DataLibrary.Data
 {
@@ -57,9 +58,11 @@ namespace DataLibrary.Data
             await _dataAccess.SaveData("sp_UpdateGame", p, _connectionString.SqlConnectionName);
         }
 
-        public async Task<List<VideoGameModel>> GetByID(int GameID)
+        public async Task<VideoGameModel> GetByID(int GameID)
         {
-            return await _dataAccess.LoadData<VideoGameModel, dynamic>("dbo.sp_GameByID", new {GameID = GameID }, _connectionString.SqlConnectionName);
+            var recs = await _dataAccess.LoadData<VideoGameModel, dynamic>("sp_GameByID", new { Id = GameID }, _connectionString.SqlConnectionName);
+
+            return recs.FirstOrDefault();
         }
 
     }

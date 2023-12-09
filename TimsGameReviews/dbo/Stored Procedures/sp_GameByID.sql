@@ -1,9 +1,9 @@
 ﻿CREATE PROCEDURE [dbo].[sp_GameByID]
-    @GameID INT
+    @Id INT
 AS
 BEGIN
     SET NOCOUNT ON;
     SELECT *
-    FROM dbo.[Rating]
-    WHERE GameID = @GameID;
+    FROM dbo.[VideoGame]
+    WHERE Id = @Id;
 END;

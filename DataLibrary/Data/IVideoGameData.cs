@@ -13,6 +13,6 @@ namespace DataLibrary.Data
         public Task<int> AddGame(VideoGameModel model);
         public Task UpdateGame(VideoGameModel model);
 
-        public Task<List<VideoGameModel>> GetByID(int GameID);
+        public Task<VideoGameModel> GetByID(int GameID);
     }
 }
